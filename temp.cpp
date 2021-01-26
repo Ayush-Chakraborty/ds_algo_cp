@@ -8,31 +8,34 @@
 #define nl "\n"
 #define ll long long
 #define vi vector<int>
-#define INF 2000000000
+#define vl vector<long long>
+#define inf 2147483647
+#define INF 9223372036854775807
 #define f0(i,n) for(int i=0;i<n;i++)
 #define fk(i,k,n) for(int i=k;i<n;i++)
+ll one=1;
+ll M=1000000007;       //10^9+7 
 using namespace std;
-bool even(int &n)
+template<class T>
+bool is_even(T &n)
 {
-    return n%2==0;
+    return (n & 1)==0;
 }
-void input(vi &v,int &size)
+template<class T>
+void input(T *v,int size)
 {
-    v.clear();
-    int n;
     f0(i,size)
-    {
-        cin>>n;
-        v.push_back(n);
-    }
+        cin>>v[i];
 }
-void print(int arr[],int s)
+template<class T>
+void print(T *v,int size)
 {
-    for(int* i=arr;i<arr+s;i++)
-    cout<<(*i)<<" ";
+    f0(i,size)
+    cout<<v[i]<<" ";
     cout<<nl;
 }
-int array_partition(int arr[],int l,int r,int index)
+template<class T>
+int array_partition(T &arr,int l,int r,int index)
 {
     if(r<l)
     return -1;
@@ -54,7 +57,8 @@ int array_partition(int arr[],int l,int r,int index)
     swap(arr[l],arr[i]);
     return i;
 }
-int kth_smallest(int arr[],int l,int r,int k)
+template<class T>
+int kth_smallest(T &arr,int l,int r,int k)
 {
     if(k<0 || r-l+1<k)
     return INF;
@@ -79,8 +83,49 @@ int maxSubarraySum(int arr[], int n)
     }
     return mx;
 }
+template<class T>
+T gcd(T a,T b)
+{
+    if(a==0)
+        return b;
+    return gcd(b%a,a);
+}
+template<class T>
+ll nCr(T n,T r)
+{
+    
+    if(n<r || n<0 || r<0)
+    return -1;
+    if(r==0)
+    return 1;
+    if(r>n-r)
+    r=n-r;
+    ll nu,de,m;
+    nu=de=1;
+    while(r)
+    {
+        nu*=n;
+        de*=r;
+        m=gcd(n,r);
+        nu/=m;
+        de/=m;
+        n--;
+        r--;
+    }
+    return (nu/de);
+}
+void solve()
+{
+   
+}
 int main()
 {
-    cout<<((-5)%7);
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    int t;
+    t=1;
+
+    while(t--)
+        solve();
     return 0;
 }
